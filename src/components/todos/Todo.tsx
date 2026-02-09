@@ -1,12 +1,12 @@
 import { type FC } from 'react';
-import type { ITodo } from '../models/ITodo';
+import type { ITodo } from '../../models/ITodo';
 
 type PropTypes = {
   todo: ITodo;
 };
 
 const Todo: FC<PropTypes> = ({ todo }) => {
-  const { id: _id, title, completed, userId } = todo;
+  const { id: _id, todo: title, completed, userId } = todo;
   const id = String(_id);
 
   return (
@@ -14,7 +14,7 @@ const Todo: FC<PropTypes> = ({ todo }) => {
       <span className='text-xl'>{title}</span>
       <span>{`userId: ${userId}`}</span>
       <label>
-        <input id={id} type='checkbox' checked={completed} /> completed
+        <input id={id} type='checkbox' defaultChecked={completed} /> completed
       </label>
     </form>
   );

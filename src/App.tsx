@@ -1,8 +1,22 @@
+import Todos from './components/todos/Todos';
+import Posts from './components/posts/Posts';
+import Comments from './components/comments/Comments';
 import './App.css';
-import Todos from './components/Todos';
+// import { getComments } from './services/api.service';
+// import { useEffect } from 'react';
 
 function App() {
-  return <Todos />;
+  // useEffect(() => {
+  //   getComments().then((data) => console.log(data));
+  // }, []);
+
+  return (
+    <>
+      <Comments />
+      <Posts />
+      <Todos />;
+    </>
+  );
 }
 
 export default App;
