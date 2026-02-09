@@ -1,8 +1,8 @@
+import Posts from './components/Posts';
 import './App.css';
 
 function App() {
-  return <></>;
+  return <Posts />;
 }
 
 export default App;
-
