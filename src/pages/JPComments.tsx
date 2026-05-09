@@ -1,5 +1,5 @@
 const Comments = () => {
-  return <div>Comments</div>;
+  return <div>JsonPlaceholder Comments</div>;
 };
 
 export default Comments;

@@ -1,5 +1,5 @@
 const Posts = () => {
-  return <div>Posts</div>;
+  return <div>JsonPlaceholder Posts</div>;
 };
 
 export default Posts;
