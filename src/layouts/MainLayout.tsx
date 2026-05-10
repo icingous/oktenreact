@@ -1,7 +1,5 @@
-import { Outlet } from 'react-router-dom';
+import UsersPage from '../pages/users/UsersPage';
 
-const MainLayout = () => {
-  return <Outlet />;
-};
+const MainLayout = () => <UsersPage />;
 
 export default MainLayout;

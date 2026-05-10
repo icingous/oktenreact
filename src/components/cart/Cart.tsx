@@ -11,7 +11,7 @@ const Cart: FC<ICartProps> = ({ cart }) => {
     <div>
       <span className='inline-block mb-2 font-bold'>{`total: ${cart.total}`}</span>
       {cart.products.map((product) => (
-        <Product product={product} />
+        <Product key={product.id} product={product} />
       ))}
     </div>
   );
