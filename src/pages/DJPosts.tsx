@@ -1,5 +1,13 @@
-const Posts = () => {
-  return <div>DummyJson Posts</div>;
+import Posts from '../components/posts/Posts';
+import { DJUserService } from '../services/api.service';
+
+const DJPosts = () => {
+  return (
+    <div>
+      <h2>DummyJson Posts</h2>
+      <Posts service={DJUserService} />
+    </div>
+  );
 };
 
-export default Posts;
+export default DJPosts;
