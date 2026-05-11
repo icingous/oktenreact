@@ -8,7 +8,7 @@ interface IUserProps {
 
 const User: FC<IUserProps> = ({ user }) => {
   const navigate = useNavigate();
-  const onClickHandler = () => navigate(`${user.id}/carts`);
+  const onClickHandler = () => navigate(`/${user.id}/carts`);
 
   return (
     <div className='grid grid-cols-[150px_auto]'>

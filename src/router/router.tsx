@@ -11,8 +11,8 @@ const router = createBrowserRouter([
       {
         path: 'users',
         element: <UsersPage />,
-        children: [{ path: ':userId/carts', element: <UserCartsPage /> }],
       },
+      { path: ':userId/carts', element: <UserCartsPage /> },
     ],
   },
 ]);
