@@ -1,11 +1,11 @@
 import Users from '../components/users/Users';
-import { JPUserService } from '../services/api.service';
+import urls from '../constants/urls';
 
 const JPUsers = () => {
   return (
     <div>
       <h2>JsonPlaceholder Users</h2>
-      <Users service={JPUserService} />
+      <Users url={urls.jp.users} />
     </div>
   );
 };

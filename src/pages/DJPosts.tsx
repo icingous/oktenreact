@@ -1,11 +1,11 @@
 import Posts from '../components/posts/Posts';
-import { DJUserService } from '../services/api.service';
+import urls from '../constants/urls';
 
 const DJPosts = () => {
   return (
     <div>
       <h2>DummyJson Posts</h2>
-      <Posts service={DJUserService} />
+      <Posts url={urls.dj.posts} />
     </div>
   );
 };

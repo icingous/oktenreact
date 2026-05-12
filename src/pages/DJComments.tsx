@@ -1,11 +1,11 @@
 import Comments from '../components/comments/Comments';
-import { DJUserService } from '../services/api.service';
+import urls from '../constants/urls';
 
 const DJComments = () => {
   return (
     <div>
       <h2>DummyJson Comments</h2>
-      <Comments service={DJUserService} />
+      <Comments url={urls.dj.comments} />
     </div>
   );
 };

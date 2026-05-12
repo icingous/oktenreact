@@ -1,11 +1,11 @@
 import Users from '../components/users/Users';
-import { DJUserService } from '../services/api.service';
+import urls from '../constants/urls';
 
 const JPUsers = () => {
   return (
     <div>
       <h2>DummyJson Users</h2>
-      <Users service={DJUserService} />
+      <Users url={urls.dj.users} />
     </div>
   );
 };

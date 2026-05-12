@@ -1,18 +1,15 @@
 import { useEffect, useState, type FC } from 'react';
-import type IUserService from '../../models/IUserService';
 import type IComment from '../../models/IComment';
+import type { IUrlProps } from '../../models/IUrlProps';
+import { userService } from '../../services/api.service';
 import Comment from './Comment';
 
-interface ICommentProps {
-  service: IUserService;
-}
-
-const Comments: FC<ICommentProps> = ({ service }) => {
+const Comments: FC<IUrlProps> = ({ url }) => {
   const [comments, setComments] = useState<IComment[]>([]);
 
   useEffect(() => {
-    service.getComments().then((res) => setComments(res));
-  }, [service]);
+    userService.getComments(url).then((res) => setComments(res));
+  }, [url]);
 
   return (
     <ul>

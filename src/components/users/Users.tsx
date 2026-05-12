@@ -1,20 +1,17 @@
 import { useEffect, useState, type FC } from 'react';
 import type IUser from '../../models/IUser';
+import type { IUrlProps } from '../../models/IUrlProps';
+import { userService } from '../../services/api.service';
 import User from './User';
-import type IUserService from '../../models/IUserService';
 
-interface UsersProps {
-  service: IUserService;
-}
-
-const Users: FC<UsersProps> = ({ service }) => {
+const Users: FC<IUrlProps> = ({ url }) => {
   const [users, setUsers] = useState<IUser[]>([]);
 
   useEffect(() => {
-    service.getUsers().then((users) => {
+    userService.getUsers(url).then((users) => {
       setUsers(users);
     });
-  }, [service]);
+  }, [url]);
 
   return (
     <ul>

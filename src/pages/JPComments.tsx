@@ -1,11 +1,11 @@
 import Comments from '../components/comments/Comments';
-import { JPUserService } from '../services/api.service';
+import urls from '../constants/urls';
 
 const JPComments = () => {
   return (
     <div>
       <h2>JsonPlaceholder Comments</h2>
-      <Comments service={JPUserService} />
+      <Comments url={urls.jp.comments} />
     </div>
   );
 };

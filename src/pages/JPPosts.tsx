@@ -1,11 +1,11 @@
 import Posts from '../components/posts/Posts';
-import { JPUserService } from '../services/api.service';
+import urls from '../constants/urls';
 
 const JPPosts = () => {
   return (
     <div>
       <h2>JsonPlaceholder Posts</h2>
-      <Posts service={JPUserService} />
+      <Posts url={urls.jp.posts} />
     </div>
   );
 };
