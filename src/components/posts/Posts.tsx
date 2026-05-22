@@ -1,4 +1,4 @@
-import React, { type FC } from 'react';
+import { type FC } from 'react';
 import type { IPost } from '../../models/IPost';
 import Post from './Post';
 
