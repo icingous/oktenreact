@@ -1,4 +1,4 @@
-import React, { type FC } from 'react';
+import { type FC } from 'react';
 import type { IUser } from '../../models/IUser';
 import User from './User';
 

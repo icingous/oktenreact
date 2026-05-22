@@ -1,41 +1,53 @@
-import { useEffect } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useEffect, type FC } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import type { IResponseBase } from '../../models/IResponseBase';
 
 const initSearchParams = { page: '1' };
-const paginatedRoutes = ['/users', '/posts'];
 
-const Paginator = () => {
-  const { pathname } = useLocation();
+interface IPaginatorProps {
+  data: IResponseBase;
+}
+
+const Paginator: FC<IPaginatorProps> = ({ data }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const hasPagination = paginatedRoutes.includes(pathname);
-  const page = searchParams.get('page') || '1';
-
+  const page = Number(searchParams.get('page')) || 1;
+  const { size, total } = data;
+  const hasPrevPage = page > 1;
+  const hasNextPage = Math.ceil(total / size) > page;
   const handleGoPrev = () => {
-    setSearchParams({ page: String(+page - 1) });
+    setSearchParams({ page: String(page - 1) });
   };
 
   const handleGoNext = () => {
-    setSearchParams({ page: String(+page + 1) });
+    setSearchParams({ page: String(page + 1) });
   };
 
   useEffect(() => {
-    if (!hasPagination) return;
-
     const page = searchParams.get('page');
 
     if (!page) {
       setSearchParams(initSearchParams);
     }
-  }, [hasPagination, searchParams, setSearchParams]);
+  }, [searchParams, setSearchParams]);
 
-  return hasPagination ? (
+  return (
     <div className='p-4 border-t-2 border-gray-300 font-bold text-center flex justify-center gap-2'>
-      <button onClick={handleGoPrev} disabled={+page === 1}>
+      <button
+        onClick={handleGoPrev}
+        disabled={!hasPrevPage}
+        className='cursor-pointer disabled:cursor-default disabled:font-normal disabled:text-gray-400'
+      >
         Prev
       </button>
-      <button onClick={handleGoNext}>Next</button>
+      <button
+        onClick={handleGoNext}
+        disabled={!hasNextPage}
+        className='cursor-pointer disabled:cursor-default disabled:font-normal disabled:text-gray-400'
+      >
+        Next
+      </button>
     </div>
-  ) : null;
+  );
 };
 
 export default Paginator;

@@ -4,20 +4,36 @@ import api from '../../services/api.service';
 import type { IPost } from '../../models/IPost';
 import type { IResponseBase } from '../../models/IResponseBase';
 import Posts from '../../components/posts/Posts';
+import Paginator from '../../components/paginator/Paginator';
+import { defaults } from '../../constants/defaults';
 
 const PostsPage = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
+  const [paginationData, setPaginationData] = useState<IResponseBase>(
+    defaults.responseBase,
+  );
   const [searchParams] = useSearchParams();
+  const page = Number(searchParams.get('page')) || 1;
 
   useEffect(() => {
-    const page = Number(searchParams.get('page')!);
-
     api
-      .getPage<IResponseBase & { posts: IPost[] }>('/posts', page)
-      .then((res) => setPosts(res.posts));
-  }, [searchParams]);
+      .getPage<
+        IResponseBase & { posts: IPost[] }
+      >('/posts', page, paginationData.size)
+      .then((res) => {
+        const { posts, ...data } = res;
 
-  return <Posts posts={posts} />;
+        setPaginationData((state) => ({ ...state, ...data }));
+        setPosts(posts);
+      });
+  }, [paginationData.size, page]);
+
+  return (
+    <>
+      <Posts posts={posts} />
+      <Paginator data={paginationData} />
+    </>
+  );
 };
 
 export default PostsPage;
