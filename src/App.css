@@ -1,0 +1,30 @@
+.dark {
+  background-color: teal;
+  color: white;
+}
+
+.light {
+  background-color: white;
+  color: teal;
+}
+
+button {
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.dark button {
+  border: 2px solid white;
+}
+
+.light button {
+  border: 2px solid teal;
+}
+
+.dark button:disabled,
+.light button:disabled {
+  color: lightgray;
+  border-color: lightgray;
+  cursor: default;
+}
