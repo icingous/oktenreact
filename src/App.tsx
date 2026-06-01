@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       {users.map(({ id, name }) => (
-        <div>{`${id} ${name}`}</div>
+        <div key={id}>{`${id} ${name}`}</div>
       ))}
     </>
   );
