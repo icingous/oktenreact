@@ -1,8 +1,15 @@
-import './App.css';
+import { Provider } from "react-redux";
+import "./App.css";
+import { RouterProvider } from "react-router";
+import router from "./router/router";
+import store from "./redux/store";
 
 function App() {
-  return <></>;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 }
 
 export default App;
-
